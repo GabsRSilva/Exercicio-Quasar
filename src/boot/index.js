@@ -10,6 +10,15 @@ export default ({ router }) => {
     ]
   })
 
+  router.addRoute({
+    path: '/user',
+    component: MainLayout,
+    children: [
+      { path: 'view', component: () => import('boot/user/UserView.vue') },
+      { path: 'edit', component: () => import('boot/user/UserEdit.vue') }
+    ]
+  })
+
   /*
   router.beforeEach((to, from, next) => {
     return next()

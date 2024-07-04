@@ -166,7 +166,12 @@ const saveOrUpdate = async () => {
     } else {
       response = await api.patch(`/cliente/${id}`, { ...cliente.value })
     }
+    $q.notify({
+      type: 'positive',
+      message: 'Dados salvo com sucesso!'
+    })
     cliente.value = response.data
+    router.go(-1)
   } finally {
     $q.loading.hide()
   }

@@ -65,6 +65,12 @@ const linksList = [
     caption: 'Clientes',
     icon: 'school',
     link: '/cliente/view'
+  },
+  {
+    title: 'Usuários',
+    caption: 'Usuários',
+    icon: 'badge',
+    link: '/user/view'
   }
 ]
 

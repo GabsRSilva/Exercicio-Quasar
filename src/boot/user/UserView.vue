@@ -1,8 +1,8 @@
 <template>
   <div class="q-pa-md">
     <q-table
-      title="Clientes"
-      :rows="clientes"
+      title="Usuários"
+      :rows="users"
       :columns="columns"
       row-key="name"
       @row-click="rowClick"
@@ -26,40 +26,12 @@ defineOptions({
   name: 'ClienteView'
 })
 
-const formatPhoneNumber = phone => {
-  phone = phone || ''
-  phone = phone.replace(/\D/g, '')
-  phone.length === 11
-    ? phone = phone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3')
-    : phone = phone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3')
-  return phone
-}
-
-const clientes = ref([])
+const users = ref([])
 const columns = ref([
-  {
-    name: 'nome',
-    label: 'Nome',
-    field: row => row.nome,
-    align: 'left'
-  },
   {
     name: 'email',
     label: 'E-mail',
-    field: row => row.email,
-    align: 'left'
-  },
-  {
-    name: 'telefone',
-    label: 'Telefone',
-    field: row => row.telefone,
-    format: val => formatPhoneNumber(val),
-    align: 'left'
-  },
-  {
-    name: 'cpf',
-    label: 'CPF',
-    field: row => row.cpf,
+    field: row => row.nome,
     align: 'left'
   }
 ])
@@ -67,15 +39,15 @@ const columns = ref([
 onMounted(async () => {
   $q.loading.show()
   try {
-    const response = await api.get('/cliente')
-    clientes.value = response.data
+    const response = await api.get('/users')
+    users.value = response.data
   } finally {
     $q.loading.hide()
   }
 })
 
 const redirectTo = id => {
-  router.push(`/cliente/edit?id=${id}`)
+  router.push(`/users/edit?id=${id}`)
 }
 
 const rowClick = (_, row) => {
