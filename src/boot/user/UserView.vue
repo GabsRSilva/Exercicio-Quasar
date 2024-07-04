@@ -31,7 +31,7 @@ const columns = ref([
   {
     name: 'email',
     label: 'E-mail',
-    field: row => row.nome,
+    field: row => row.email,
     align: 'left'
   }
 ])
@@ -47,7 +47,7 @@ onMounted(async () => {
 })
 
 const redirectTo = id => {
-  router.push(`/users/edit?id=${id}`)
+  router.push(`/user/edit?id=${id}`)
 }
 
 const rowClick = (_, row) => {
