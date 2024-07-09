@@ -6,7 +6,10 @@ const api = axios.create({ baseURL: 'http://localhost:3000' })
 const http = axios.create()
 
 api.interceptors.request.use(function (config) {
-  config.headers.Authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInVzZXJuYW1lIjoicmljYXJkb21wYkBvdXRsb29rLmNvbSIsImlhdCI6MTcyMDA1NDQ1NywiZXhwIjoxNzIwMTQwODU3fQ.CXUM1hYDv0JC9QLBLQnD-BH0MBTuzE6Gg-ExBlVlQyc'
+  const token = localStorage.getItem('token')
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
   return config
 }, (error) => {
   return Promise.reject(error)

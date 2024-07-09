@@ -2,6 +2,11 @@ import MainLayout from 'layouts/MainLayout.vue'
 
 export default ({ router }) => {
   router.addRoute({
+    path: '/login',
+    component: () => import('boot/login/LoginForm.vue')
+  })
+
+  router.addRoute({
     path: '/cliente',
     component: MainLayout,
     children: [
@@ -18,10 +23,4 @@ export default ({ router }) => {
       { path: 'edit', component: () => import('boot/user/UserEdit.vue') }
     ]
   })
-
-  /*
-  router.beforeEach((to, from, next) => {
-    return next()
-  })
-    */
 }

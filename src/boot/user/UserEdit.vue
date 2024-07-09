@@ -20,6 +20,19 @@
     </div>
   </q-toolbar>
   <div class="row q-pa-sm q-col-gutter-sm">
+    <q-input
+      label="Usuário"
+      class="col"
+      outlined
+      v-model="user.email"
+    />
+    <q-input
+      label="Senha"
+      class="col"
+      outlined
+      type="password"
+      v-model="user.password"
+    />
   </div>
 </template>
 
