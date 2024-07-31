@@ -2,7 +2,7 @@
     <div class="login">
         <q-input label="E-mail" v-model="email"/>
         <q-input label="Senha" type="password" v-model="password"/>
-        <q-btn type="positove" label="Login" @click="entrar"/>
+        <q-btn type="positove" label="Login" class="botton" @click="entrar"/>
     </div>
 </template>
 
@@ -22,7 +22,7 @@ const entrar = async () => {
     password: password.value
   })
   localStorage.setItem('token', res.data.token)
-  router.push('/')
+  router.push('/boots')
 }
 
 </script>
@@ -30,6 +30,15 @@ const entrar = async () => {
 <style>
 .login {
     display: flex;
-    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 40px 30%;
+    background-color: #5ecf4c;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.botton{
+  margin-top: 50px;
 }
 </style>
